@@ -12,7 +12,7 @@ const montesserat = Montserrat({
 });
 export default function Page() {
   return (
-    <div className=" flex items-stretch justify-center gap-12 pt-8">
+    <div className=" flex items-stretch justify-center gap-12 pt-8 animate-fade-in">
       <div
         className=" max-w-[340px] pt-6 pb-8 px-4 rounded-lg flex-col flex items-center gap-2 text-white text-wrap"
         style={{

@@ -1,31 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { act, useState } from "react";
-import React from "react";
-
-export function SimMenuBtn({
-  children,
-  classname,
-  path,
-}: {
-  classname?: string;
-  children: React.ReactNode;
-  path: string;
-}) {
-  const router = useRouter();
-  return (
-    <button
-      onClick={() => {
-        router.replace(path);
-      }}
-      className={cn(" py-2 px-4 w-full text-center rounded-lg ", classname)}
-    >
-      {children}
-    </button>
-  );
-}
+import { useState } from "react";
 
 export function ToggleSimRegion() {
   const [active, setActive] = useState<"uk" | "europe">("uk");
