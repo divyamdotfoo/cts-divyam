@@ -183,9 +183,7 @@ export function SimMenuBtn({
       whileTap={{ scale: 0.98 }}
       onClick={() => {
         setActive();
-        setTimeout(() => {
-          router.replace(path);
-        }, 400);
+        router.replace(path);
       }}
       className={cn(" py-2 px-4 w-full text-center rounded-lg ", classname)}
     >
