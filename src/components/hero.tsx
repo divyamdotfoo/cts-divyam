@@ -15,8 +15,17 @@ export function Hero() {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "left",
         backgroundSize: "120% auto",
+        clipPath: "ellipse(150% 100% at 50% 0%)",
       }}
     >
+      <img
+        src={"/hero.jpeg"}
+        alt=""
+        width={1300}
+        height={700}
+        className=" hidden"
+        loading="eager"
+      />
       <h2
         className={`${poppins.className} text-4xl leading-[50px] font-extrabold italic text-white drop-shadow-[5px_0px_4px_rgba(0,0,0,0.55)] w-3/5`}
       >

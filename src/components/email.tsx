@@ -1,6 +1,6 @@
 export function NewsLetter() {
   return (
-    <div className=" pt-12 pb-32 text-white max-w-5xl mx-auto">
+    <div className=" pt-12 text-white max-w-5xl mx-auto pb-10">
       <div className="bg-[#012169] flex items-center rounded-md p-3 ">
         <p className=" text-nowrap basis-1/4 font-medium">Newsletter Sign Up</p>
         <div className="basis-3/4 relative">

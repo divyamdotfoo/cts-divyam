@@ -20,7 +20,7 @@ const config = {
     extend: {
       colors: {
         eePrimary: "hsl(var(--ee-primary))",
-        eeGreen: "hsl(var(--ee-green))",
+        greenPrimary: "var(--greenPrimary)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -1,9 +1,10 @@
 "use client";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { Crown, EE, Three } from "./svgs";
+import Image from "next/image";
 export function SimMenu() {
   const pathname = usePathname();
   const calculateActive = (z: string) =>
@@ -34,13 +35,14 @@ export function SimMenu() {
       {/* three */}
       <SimMenuActionCard active={active} id={0}>
         <div className=" flex flex-col items-center gap-2">
-          <Image
+          {/* <Image
             src={"/sim_three.svg"}
             alt=""
             width={100}
             height={100}
             className=" w-6 h-6"
-          />
+          /> */}
+          <Three className=" w-6 h-6" />
           <h3 className=" font-bold text-xl">Three</h3>
         </div>
         <SimMenuBtn
@@ -62,25 +64,28 @@ export function SimMenu() {
         }}
       >
         <div className=" flex flex-col items-center">
-          <Image
+          {/* <Image
             src={"/sim_ee.svg"}
             alt=""
             width={100}
             height={100}
             className=" w-6 h-6"
-          />
-          <Image
+          /> */}
+          <EE className=" w-6 h-6" />
+          {/* <Image
             src={"/crown.svg"}
             alt=""
             width={100}
             height={100}
             className=" w-6 h-6"
-          />
+          /> */}
+
+          <Crown className=" w-6 h-6" />
           <h3 className=" font-bold text-xl text-white">EE</h3>
-          <span className=" text-sm text-white text-center">
+          <span className=" text-[10px] text-white text-center">
             Solely available
           </span>
-          <span className=" text-center text-[#FFE401] text-base font-medium">
+          <span className=" text-center text-[#FFE401] text-sm font-medium">
             on eSIM cards
           </span>
         </div>
@@ -103,6 +108,7 @@ export function SimMenu() {
             height={100}
             className=" w-6 h-6"
           />
+          {/* <O2 className=" w-6 h-6" /> */}
           <h3 className=" font-bold text-xl text-[#0E1F7F]">O2</h3>
         </div>
         <SimMenuBtn
@@ -124,6 +130,7 @@ export function SimMenu() {
             height={100}
             className=" w-6 h-6"
           />
+          {/* <Vodafone className=" w-6 h-6" /> */}
           <h3 className=" font-bold text-xl text-[#E31D1A]">Vodafone</h3>
         </div>
         <SimMenuBtn

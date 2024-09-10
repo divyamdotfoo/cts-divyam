@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <div>
-      <div className=" max-w-5xl grid grid-cols-4 mx-auto pb-20">
+    <div className=" bg-white pt-10">
+      <div className=" max-w-5xl grid grid-cols-4 mx-auto ">
         <Image
           src="/logo.png"
           width={200}
@@ -59,7 +59,7 @@ export function Footer() {
           </p>
         </div>
       </div>
-      <p className=" text-center pb-4 text-xs font-medium text-gray-900 opacity-60">
+      <p className=" text-center py-6 text-xs font-medium text-gray-900 opacity-60">
         © airhubsystems 2024
       </p>
     </div>
