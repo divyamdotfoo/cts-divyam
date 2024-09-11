@@ -19,24 +19,5 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div>
-      <Hero />
-      <div className=" flex flex-col items-center pt-8">
-        <p
-          className={cn(poppins.className, " text-[#29242B] pb-4 font-medium")}
-        >
-          Find the Right EE eSIM Plan for Your Needs
-        </p>
-        <ToggleSimRegion />
-        <ToggleSimPlan />
-      </div>
-      {children}
-      <InstallationSteps />
-      <FeatureCard />
-      <FAQ />
-      <WhyChooseUs />
-      <NewsLetter />
-    </div>
-  );
+  return <div></div>;
 }
