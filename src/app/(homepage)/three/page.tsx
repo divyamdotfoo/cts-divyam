@@ -7,7 +7,7 @@ import { PLANS } from "@/DATA";
 export default function Page() {
   const { THREE: plans } = PLANS;
   return (
-    <div className=" flex items-stretch justify-center gap-12 pt-8 animate-fade-in">
+    <div className=" grid grid-cols-3 gap-4">
       {plans.map((plan) => (
         <PlanCard plan={plan} key={plan.id}>
           <PlanFeatures>

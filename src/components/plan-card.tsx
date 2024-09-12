@@ -1,7 +1,10 @@
 "use client";
-import { Plan, TValidity } from "@/lib/types";
-import Image from "next/image";
-import React, { useState } from "react";
+
+import { useCart } from "@/lib/store";
+import { Plan, Providers, TValidity } from "@/lib/types";
+import { cn } from "@/lib/utils";
+import { Check } from "lucide-react";
+import { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -9,12 +12,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { cn, poppins } from "@/lib/utils";
-import { useCart } from "@/lib/store";
-import { motion } from "framer-motion";
-import { CircleCheck } from "lucide-react";
-const PlanCard = ({
+} from "./ui/select";
+import { EE, O2, Three, Vodafone } from "./svgs";
+export const PlanCard = ({
   children,
   plan,
   defaultActive = 1,
@@ -29,28 +29,30 @@ const PlanCard = ({
     add: s.addPlans,
   }));
   return (
-    <div className="flex flex-col items-center bg-white rounded-3xl px-4 pt-6 pb-8 shadow-md max-w-72 relative">
-      <div className=" absolute -bottom-4 -z-20 h-20 w-4/5 rounded-xl mx-auto bg-white shadow-sm"></div>
+    <div
+      className="flex flex-col items-center bg-white/60 rounded-3xl px-6 pt-6 pb-4 shadow-md max-w-72 relative"
+      style={{
+        boxShadow:
+          "0 0 0 1px #9701970f, 0 1px 1px #9701970a, 0 3px 3px #97019708, 0 6px 4px #97019705, 0 11px 4px #97019703, 0 32px 24px -12px #7226720f",
+      }}
+    >
+      <div
+        className=" absolute -bottom-[10px] h-8 w-[80%] left-1/2 -translate-x-1/2 -z-20 rounded-3xl bg-white/40 "
+        style={{
+          boxShadow:
+            "0 1px 1px #9701970a, 0 3px 3px #97019708, 0 6px 4px #97019705, 0 11px 4px #97019703, 0 32px 24px -12px #7226720f",
+        }}
+      ></div>
+
       <div className="flex items-center justify-center gap-2 pb-2">
-        <Image
-          className="w-6"
-          src={`/${plan.provider.toLowerCase()}.svg`}
-          alt="company logo"
-          width={100}
-          height={100}
-        />
+        {renderPlanProviderIcon(plan.provider)}
         <p>{plan.data === "unlimited" ? "Unlimited" : `${plan.data} GB`}</p>
       </div>
-      <p
-        className={cn(
-          "text-eeGreen text-xl pb-2 pt-[2px] font-medium",
-          poppins.className
-        )}
-      >
+      <p className={cn("text-xl pb-2 pt-[2px] font-medium")}>
         <span className=" text-3xl">£{plan.variants[activeVariant].rate}</span>
         /mo
       </p>
-      <p className="text-xs text-black font-medium pb-2">
+      <p className="text-xs font-medium pb-2">
         Total: £{`${plan.variants[activeVariant].rate * activeVariant}`}
       </p>
       <p className="text-eeGreen text-sm brightness-[1.05] font-medium pb-2">
@@ -61,12 +63,11 @@ const PlanCard = ({
         onValueChange={(v) => setActiveVariant(Number(v) as TValidity)}
       >
         <div className=" relative">
-          <SelectTrigger className="w-[120px] bg-transparent border-none font-medium">
+          <SelectTrigger className="w-28 bg-transparent border-none font-medium">
             <SelectValue placeholder="30 days" />
           </SelectTrigger>
-          <p className=" absolute w-[120%] h-[1px] rounded-xl -bottom-2 -translate-x-[10%] bg-slate-300"></p>
         </div>
-        <SelectContent>
+        <SelectContent className="">
           <SelectGroup>
             {Object.values(plan.variants).map((p) => (
               <SelectItem value={String(p.id)} key={p.id}>
@@ -76,9 +77,7 @@ const PlanCard = ({
           </SelectGroup>
         </SelectContent>
       </Select>
-      {children}
-      <motion.button
-        whileTap={{ scale: 0.99 }}
+      <button
         onClick={() => {
           add({
             data: plan.data,
@@ -93,35 +92,69 @@ const PlanCard = ({
           });
         }}
         className={cn(
-          "w-full flex items-center justify-center py-1 rounded-lg border transition-all",
-          plans.findIndex((p) => p.id === plan.id) === -1
-            ? "text-white bg-black"
-            : " text-black bg-white"
+          " bg-white py-2 px-3 flex items-center justify-center rounded-lg w-full mx-auto relative hover:shadow-[0_0_0_1px_#2f019714,_0_1px_1px_#2f019714,_0_3px_3px_#2f01970f,_0_6px_4px_#2f01970a,_0_11px_4px_#2f019703]"
         )}
+        style={{
+          boxShadow:
+            "0 0 0 1px #2f019714, 0 1px 1px #2f01970a, 0 3px 3px #2f019708, 0 6px 4px #2f019705, 0 11px 4px #2f019703",
+        }}
       >
+        <span className=" absolute w-[calc(100%-10px)] hover:border-x-2 hover:border-b-2 left-1/2 -translate-x-1/2 top-[2px] rounded-xl border-gray-100 border-x-0 border-b-0 border-t-2 h-[calc(100%-5px)]"></span>
         {plans.findIndex((p) => p.id === plan.id) === -1
           ? "Add to cart"
           : "Added"}
-      </motion.button>
-    </div>
-  );
-};
-
-const PlanFeatures = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className=" flex flex-col items-start gap-3 py-8 text-sm text-black/60 font-medium">
+      </button>
       {children}
     </div>
   );
 };
 
-const PlanFeatureItem = ({ children }: { children: React.ReactNode }) => {
+export const PlanFeatures = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className=" flex items-center gap-1">
-      <CircleCheck className=" w-4 h-4 fill-black text-white" />
-      <p>{children}</p>
+    <div className=" flex flex-col items-start gap-3 pt-8 py-4 text-sm font-medium">
+      {children}
     </div>
   );
 };
 
-export { PlanCard, PlanFeatures, PlanFeatureItem };
+export const PlanFeatureItem = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  return (
+    <div className=" flex items-center gap-3">
+      <Check className=" w-4 h-4 font-bold" />
+      <p className=" tracking-wider">{children}</p>
+    </div>
+  );
+};
+
+const renderPlanProviderIcon = (provider: Providers) => {
+  switch (provider) {
+    case "EE":
+      return (
+        <div className=" w-7 h-7 text-inherit">
+          <EE />
+        </div>
+      );
+    case "O2":
+      return (
+        <div className=" w-6 h-6 text-inherit">
+          <O2 />
+        </div>
+      );
+    case "THREE":
+      return (
+        <div className=" w-10 h-10 text-inherit">
+          <Three />
+        </div>
+      );
+    case "VODAFONE":
+      return (
+        <div className=" w-6 h-6 text-inherit">
+          <Vodafone />
+        </div>
+      );
+  }
+};

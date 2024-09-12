@@ -1,27 +1,82 @@
-import Link from "next/link";
-import { ShowCart } from "@/components/btns";
-import Image from "next/image";
+"use client";
+
+import { cn } from "@/lib/utils";
+import {
+  AnimatePresence,
+  useMotionValueEvent,
+  useScroll,
+  motion,
+} from "framer-motion";
+import { ShoppingCart } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const { scrollYProgress } = useScroll();
+
+  useMotionValueEvent(scrollYProgress, "change", (current) => {
+    if (typeof current === "number") {
+      let direction = current! - scrollYProgress.getPrevious()!;
+
+      if (direction > 0 && current > 0.04) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+    }
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 64) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <div className=" flex items-center justify-between px-9 pt-2 pb-4">
-      <div>
-        <Image
-          alt="company logo"
-          src="/logo.png"
-          width={300}
-          height={300}
-          loading="eager"
-          className=" w-16"
-        />
-      </div>
-      <div className=" flex items-center gap-8 font-medium">
-        <Link href={"/"}>Home</Link>
-        <Link href={"/"}>Shop eSIMs</Link>
-        <Link href={"/"}>About Us</Link>
-        <Link href={"/"}>Blogs</Link>
-      </div>
-      <ShowCart />
-    </div>
+    <AnimatePresence mode="wait">
+      <motion.div
+        initial={{
+          opacity: 1,
+          y: -100,
+        }}
+        animate={{
+          y: visible ? 0 : -100,
+          opacity: visible ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
+        className={cn(
+          "z-50 flex items-center inset-x-0 fixed top-8 font-medium justify-between px-4 py-2 text-xs  rounded-2xl w-[500px]  border mx-auto shadow-sm",
+          scrolled
+            ? " bg-[#fffffff3]  border-pink-100 "
+            : "bg-gradient-to-b from-[#fff6] to-transparent border-purple-100 "
+        )}
+      >
+        <div>
+          <img src="/logo.png" width={45} />
+        </div>
+        <div className=" flex items-center gap-8">
+          <p>Home</p>
+          <p>Shop eSIMs</p>
+          <p>Blogs</p>
+          <p>About Us</p>
+        </div>
+        <div>
+          <ShoppingCart className=" w-4 h-4" />
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }

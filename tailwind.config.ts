@@ -20,7 +20,7 @@ const config = {
     extend: {
       colors: {
         eePrimary: "hsl(var(--ee-primary))",
-        greenPrimary: "var(--greenPrimary)",
+        eeGreen: "hsl(var(--ee-green))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -73,11 +73,41 @@ const config = {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
+        float: {
+          "0%": {
+            translate: "0px -10px",
+          },
+          "50%": {
+            translate: "0px 0px",
+          },
+          "100%": {
+            translate: "0px -10px",
+          },
+        },
+        "float-diagonal": {
+          "0%": {
+            translate: "0px",
+          },
+          "50%": {
+            translate: "10px 3px",
+          },
+          "100%": {
+            translate: "0px",
+          },
+        },
+        "float-horizontal": {
+          "0%": { translate: "0px" },
+          "50%": { translate: "-10px 0px" },
+          "100%": { translate: "0px" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.2s ease-out",
+        float: "float 3s ease-in-out infinite 1s",
+        "float-diagonal": "float-diagonal 4s ease-in-out infinite 1s",
+        "float-horizontal": "float-horizontal 4s ease-in-out infinite 1s",
       },
     },
   },

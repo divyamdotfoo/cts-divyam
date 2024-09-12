@@ -1,16 +1,24 @@
-import { cn, poppins } from "@/lib/utils";
+import {
+  PlanCard,
+  PlanFeatureItem,
+  PlanFeatures,
+} from "@/components/plan-card";
+import { PLANS } from "@/DATA";
 
 export default function Page() {
+  const { VODAFONE: plans } = PLANS;
   return (
-    <h1
-      className={cn(
-        "text-center text-4xl py-10 font-medium text-pink-600 animate-fade-in",
-        poppins.className
-      )}
-    >
-      Vodafone
-      <br />
-      Plans coming soon
-    </h1>
+    <div className=" flex items-stretch justify-center gap-8">
+      {plans.map((plan) => (
+        <PlanCard plan={plan} key={plan.id}>
+          <PlanFeatures>
+            {plan.features &&
+              plan.features.map((f, i) => (
+                <PlanFeatureItem key={i}>{f}</PlanFeatureItem>
+              ))}
+          </PlanFeatures>
+        </PlanCard>
+      ))}
+    </div>
   );
 }
