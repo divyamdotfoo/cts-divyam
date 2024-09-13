@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, montserrat } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { AlarmClockCheck, Infinity, PhoneCallIcon, Zap } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -99,10 +99,10 @@ function HeroFeatures() {
 
 function Header() {
   return (
-    <div className=" flex flex-col items-center gap-3">
+    <div className={`flex flex-col items-center gap-3 ${montserrat.className}`}>
       <h1
         className={cn(
-          " mx-auto text-center mt-16 flex flex-col items-center text-7xl font-medium tracking-tight leading-tight"
+          " mx-auto text-center mt-16 flex flex-col items-center text-7xl font-semibold leading-tight"
         )}
       >
         <span
@@ -133,7 +133,7 @@ function Header() {
         </span>
       </h1>
       <h2
-        className=" max-w-lg text-center"
+        className=" max-w-lg text-center font-medium"
         style={{
           background: "linear-gradient(180deg, #2A0365 0%, #460885 100%)",
           backgroundClip: "text",

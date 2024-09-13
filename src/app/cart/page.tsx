@@ -1,4 +1,3 @@
-import { Cart } from "@/components/cart";
 import { cn, poppins } from "@/lib/utils";
 
 export default function Page() {
@@ -8,7 +7,6 @@ export default function Page() {
         <p className="w-32 h-1 bg-black rounded-md"></p>
         <p className={cn("font-bold italic text-3xl")}>Your Cart</p>
       </div>
-      <Cart />
     </div>
   );
 }

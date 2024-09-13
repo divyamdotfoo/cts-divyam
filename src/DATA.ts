@@ -128,6 +128,48 @@ export const PLANS: Record<Providers, Plan[]> = {
         },
       },
     },
+    {
+      data: "unlimited",
+      id: "kjadshfjhxadfd",
+      provider: "THREE",
+      region: "UK_EU",
+      type: "Voice_Data",
+      variants: {
+        1: {
+          id: 1,
+          rate: 22,
+          validityString: "30-days",
+          strikeOffRate: null,
+        },
+        "3": {
+          id: 3,
+          rate: 20.5,
+          strikeOffRate: null,
+          validityString: "3-months",
+        },
+        "6": {
+          id: 6,
+          rate: 18.5,
+          strikeOffRate: null,
+          validityString: "6-months",
+        },
+        "12": {
+          id: 12,
+          rate: 16.5,
+          strikeOffRate: null,
+          validityString: "12-months",
+        },
+      },
+      features: [
+        "1TB High Speed Data",
+        "UK's Unlimited Voice call",
+        "Enjoy hotspot",
+        "5G High Speed Connection",
+        "No Roaming (UK Only)",
+        "No credit check",
+        "Friendly Installation",
+      ],
+    },
   ],
   EE: [
     {
@@ -135,6 +177,48 @@ export const PLANS: Record<Providers, Plan[]> = {
       id: "jdshfjhdsfjshfswer",
       provider: "EE",
       region: "UK",
+      type: "Voice_Data",
+      variants: {
+        1: {
+          id: 1,
+          rate: 39,
+          validityString: "30-days",
+          strikeOffRate: null,
+        },
+        "3": {
+          id: 3,
+          rate: 38,
+          strikeOffRate: null,
+          validityString: "3-months",
+        },
+        "6": {
+          id: 6,
+          rate: 37,
+          strikeOffRate: null,
+          validityString: "6-months",
+        },
+        "12": {
+          id: 12,
+          rate: 36,
+          strikeOffRate: null,
+          validityString: "12-months",
+        },
+      },
+      features: [
+        "750GB High Speed Data",
+        "UK's Unlimited Voice call",
+        "Enjoy hotspot",
+        "5G High Speed Connection",
+        "No Roaming (UK Only)",
+        "No credit check",
+        "Friendly Installation",
+      ],
+    },
+    {
+      data: "unlimited",
+      id: "kdjfkjadskfa",
+      provider: "EE",
+      region: "UK_EU",
       type: "Voice_Data",
       variants: {
         1: {

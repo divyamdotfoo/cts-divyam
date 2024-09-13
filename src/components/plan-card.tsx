@@ -1,5 +1,4 @@
 "use client";
-
 import { useCart } from "@/lib/store";
 import { Plan, Providers, TValidity } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -14,6 +13,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { EE, O2, Three, Vodafone } from "./svgs";
+import { motion } from "framer-motion";
 export const PlanCard = ({
   children,
   plan,
@@ -28,6 +28,7 @@ export const PlanCard = ({
     plans: s.plans,
     add: s.addPlans,
   }));
+
   return (
     <div
       className="flex flex-col items-center bg-white/60 rounded-3xl px-6 pt-6 pb-4 shadow-md max-w-72 relative"

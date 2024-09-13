@@ -1,6 +1,6 @@
 export type Providers = "THREE" | "EE" | "O2" | "VODAFONE";
 const Validity = [1, 3, 6, 12] as const;
-
+export type Region = "UK" | "UK_EU";
 export type TValidity = (typeof Validity)[number];
 
 export type PlanVariants = {
@@ -14,7 +14,7 @@ export type PlanVariants = {
 
 export interface Plan {
   provider: Providers;
-  region: "UK" | "UK_EU";
+  region: Region;
   type: "Voice_Data" | "SMS";
   data: "unlimited" | number;
   id: string;

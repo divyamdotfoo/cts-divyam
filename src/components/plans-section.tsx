@@ -1,6 +1,7 @@
 import React from "react";
 import { AnimateUp } from "./animations-wrappers";
 import { PlanProviders } from "./plan-provider-menu";
+import { cn, montserrat } from "@/lib/utils";
 
 export function PlansSection({ children }: { children: React.ReactNode }) {
   return (
@@ -14,7 +15,12 @@ export function PlansSection({ children }: { children: React.ReactNode }) {
       <div className="-translate-y-52">
         <AnimateUp>
           <div className="flex flex-col gap-10 items-center  text-[#312749ff] ">
-            <p className=" text-5xl font-bold  flex flex-col leading-tight items-center ">
+            <p
+              className={cn(
+                "text-5xl font-bold  flex flex-col leading-tight items-center",
+                montserrat.className
+              )}
+            >
               <span>Discover the Best eSIM</span>
               <span>Providers in the UK</span>
             </p>
@@ -23,7 +29,7 @@ export function PlansSection({ children }: { children: React.ReactNode }) {
           </div>
         </AnimateUp>
         <AnimateUp>
-          <div className=" mt-12 max-w-5xl mx-auto">{children}</div>
+          <div className="mt-12 max-w-5xl mx-auto">{children}</div>
         </AnimateUp>
       </div>
     </div>

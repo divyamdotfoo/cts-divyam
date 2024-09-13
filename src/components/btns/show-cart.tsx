@@ -9,14 +9,14 @@ export function ShowCart() {
     <motion.button
       whileTap={{ scale: 0.99 }}
       onClick={() => router.push("/cart")}
-      className="relative flex items-center justify-center"
+      className="relative"
     >
       {plans.length !== 0 && (
-        <p className=" absolute -right-1 -top-3 bg-greenPrimary w-4 h-4 flex items-center justify-center rounded-full text-[10px] text-white font-semibold">
+        <p className=" absolute -right-1 -top-[11px] bg-[#301F7C] w-3 h-3 flex items-center justify-center rounded-full text-[8px] text-white font-semibold">
           {plans.length}
         </p>
       )}
-      <ShoppingCart className="" />
+      <ShoppingCart className=" w-4 h-4 hover:text-[#3D348B] transition-all font-semibold" />
     </motion.button>
   );
 }
