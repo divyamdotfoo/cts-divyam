@@ -7,9 +7,17 @@ import {
 import { PLANS } from "@/DATA";
 import { Plan, Region } from "@/lib/types";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <Three />
+    </Suspense>
+  );
+}
+
+function Three() {
   const { THREE: plans } = PLANS;
   const [filteredPlans, setFilteredPlans] = useState<Plan[]>([]);
   const searchParams = useSearchParams();

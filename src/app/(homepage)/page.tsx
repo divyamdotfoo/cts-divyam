@@ -6,10 +6,17 @@ import {
 } from "@/components/plan-card";
 import { PLANS } from "@/DATA";
 import { Plan, Region } from "@/lib/types";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <EE />
+    </Suspense>
+  );
+}
+function EE() {
   const { EE: plans } = PLANS;
   const [filteredPlans, setFilteredPlans] = useState<Plan[]>([]);
   const searchParams = useSearchParams();
